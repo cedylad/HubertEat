@@ -50,22 +50,3 @@ function isLoggedOn() {
     }
     return $ret;
 }
-
-
-if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
-    // prog principal de test
-    header('Content-Type:text/plain');
-
-
-    // test de connexion
-    login("test@bts.sio", "sio");
-    if (isLoggedOn()) {
-        echo "logged";
-    } else {
-        echo "not logged";
-    }
-
-    // deconnexion
-    logout();
-}
-?>
