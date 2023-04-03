@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <div class="jumbotron">
   <h1 class="display-4">Hello, world!</h1>
-  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <img class="banner" src="img/langlade.jpg" alt="View">
   <hr class="my-4">
   <h1 class="display-4">Restruant <?=$nomR?></h1>
   <p>Ville : <?=$villeR?></p>
