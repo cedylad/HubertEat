@@ -9,16 +9,7 @@ function controleurPrincipal($action) {
     $lesActions["deconnexion"] = "deconnexion.php";
     $lesActions["profil"] = "profil.php";
     $lesActions["afficherResto"] = "afficherResto.php";
-    $lesActions["modifierProfil"] = "modifierProfil.php";
-    $lesActions["modifierNom"] = "modifierNom.php";
-    $lesActions["modifierPrenom"] = "modifierPrenom.php";
-    $lesActions["modifierAdresse"] = "modifierAdresse.php";
-    $lesActions["deleteProfil"] = "deleteProfil.php";
-    $lesActions["detailResto"] = "detailResto.php";
-    $lesActions["critiquesResto"] = "critiquesResto.php";
-    $lesActions["desactiverCom"] = "desactiverCom.php";
-    $lesActions["activerCom"] = "activerCom.php";
-    $lesActions["ajoutPlat"] = "ajoutPlat.php";
+    $lesActions["ajoutResto"] = "ajoutResto.php";
         /**
     * ----------------------------------------------------------------------------------------
     * Admin */

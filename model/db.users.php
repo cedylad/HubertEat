@@ -13,6 +13,7 @@ Function getUsers(){
     }
     return $result;
 }
+
 Function getUserByMail($mail){
     try {
         $cnx = connexionPDO();
@@ -43,6 +44,20 @@ Function addUser($lastName, $firstName, $mail, $password) {
         die();
     }
     return $resultat;
+}
+
+Function getUserByType($type){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare('SELECT mailU FROM users WHERE typeU=:type');
+        $statement->bindValue(':type', $type, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $result;
 }
 
 

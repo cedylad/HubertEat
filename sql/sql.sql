@@ -1,19 +1,12 @@
-CREATE TABLE address (
-    idA INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    cityA varchar(25),
-    countryA varchar(25)
-);
-
 CREATE TABLE typeUser(
     idT INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nameT varchar(25)
 );
 
 CREATE TABLE users(
-    idU INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    mailU varchar(30) PRIMARY KEY NOT NULL,
     lastNameU varchar(25),
     firstNameU varchar(25),
-    mailU varchar(30),
     passwordU varchar(255),
     typeU INT,
     FOREIGN KEY (typeU) REFERENCES typeUser (idT)
@@ -21,13 +14,19 @@ CREATE TABLE users(
 CREATE TABLE resto (
     idR INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nameR varchar(25),
-    ownerR INT,
+    ownerR varchar(30),
     hourOpenR varchar(25),
     hourCloseR varchar(25),
-    addressR INT,
     phoneR varchar(10),
-    FOREIGN KEY (addressR) REFERENCES address (idA),
-    FOREIGN KEY (ownerR) REFERENCES users (idU)
+    FOREIGN KEY (ownerR) REFERENCES users (mailU)
+
+);
+CREATE TABLE address (
+    idA INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    cityA varchar(25),
+    countryA varchar(25),
+    idR INT, 
+    FOREIGN KEY (idR) REFERENCES resto (idR)
 );
 
 CREATE TABLE plat (
