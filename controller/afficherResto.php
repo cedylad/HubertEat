@@ -12,9 +12,12 @@ $util = getUserByMail($mailU);
 $idR = $_GET["idR"];
 $unResto = getRestoById($idR);
 $nomR = $unResto["nameR"];
+
 $addressResto = getAddressRestoById($idR);
 $villeR = $addressResto["cityA"];
 $paysR = $addressResto["countryA"];
+
+var_dump($idR);
 
 $title = $unResto['nameR'];
 include "$racine/view/viewAfficherResto.php";

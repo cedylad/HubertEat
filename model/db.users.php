@@ -45,17 +45,4 @@ Function addUser($lastName, $firstName, $mail, $password) {
     return $resultat;
 }
 
-Function getAddressRestoById($id){
-    try {
-        $cnx = connexionPDO();
-        $statement = $cnx->prepare('SELECT * FROM address a, resto r WHERE r.addressR = a.idA AND r.addressR =:id');
-        $statement->bindValue(':id', $id, PDO::PARAM_STR);
-        $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage();
-        die();
-    }
-    return $result;
-}
 

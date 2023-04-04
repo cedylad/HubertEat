@@ -20,18 +20,16 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./?action=home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" href="./?action=home">Accueil</a>
         </li>
       </ul>
       <ul>
-        <li>  <?php if (isLoggedOn()) { ?>
-                <li><a  href="./?action=deconnexion">Me deconnecter</a></li></li>
-                <?php } else { ?>
-                  <li><a href="./?action=connexion">Me connecter</a></li>
-                  <?php }?>
+      <?php if (isLoggedOn()) { ?>
+        <li><a href="./?action=profil"><?=$_SESSION["mailU"]?></a></li>
+        <li><a  href="./?action=deconnexion">Me deconnecter</a></li></li>
+      <?php } else { ?>
+        <li><a href="./?action=connexion">Me connecter</a></li>
+      <?php }?>
       </ul>
     </div>
   </div>

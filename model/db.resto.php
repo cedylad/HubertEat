@@ -30,3 +30,17 @@ Function getRestoById($idR){
     return $result;
 }
 
+Function getAddressRestoById($idR){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare('SELECT cityA, countryA FROM address a, resto r WHERE a.idA = r.addressR AND a.idA =:idR AND r.addressR =:idR');
+        $statement->bindValue(':idR', $idR, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $result;
+}
+

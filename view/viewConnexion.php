@@ -11,10 +11,14 @@
     <input type="submit" />
   </form>
 <br />
+Pas encore de compte ?
 <a href="./?action=inscription">Inscription</a>
 <hr>
 <b>test</b><br />
-login: johndoe@mail.com<br/>
-Mot de Passe: mdp <br/>
+login amdin: johndoe@mail.fr<br/>
+Mot de Passe admin: mdp <br/>
+<br>
+login restaurateur : borisvian@mail.fr <br>
+Mot de passe restaurateur : mdp
 <br />
 <?php $content = ob_get_clean(); ?>
