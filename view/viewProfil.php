@@ -1,17 +1,17 @@
 <?php ob_start(); ?>
-Nom : <?=$nom; ?> 
+Nom : <?= $nom; ?> 
 <br/>
-Prénom : <?=$prenom; ?>
+Prénom : <?= $prenom; ?>
 <br/>
 <hr>
-<?php
-if (is_array($restobymail) || is_object($restobymail)){
-     if(count($restobymail) < 1){
-    foreach($restobymail as $resto){?>
-    Mes restaurants :<br> <?=$resto?><br>
-<?php }
-     }
-} if ($boutonAjoutResto == 1){;?>
+<?php if ($boutonAjoutResto == 1){ ?>
+    Mes restaurants :<br> 
+    
+    <?php 
+    foreach($restosbymail as $resto){ 
+        echo "<a href='./?action=afficherResto&idR=" . $resto['idR'] . "'>" . $resto['nameR'] . "</a><br>"; 
+    } ?> 
     <a href="./?action=ajoutResto">Ajouter un restaurant</a>
-<?php }?>
+<?php } ?>
+
 <?php $content = ob_get_clean(); ?>

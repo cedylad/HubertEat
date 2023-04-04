@@ -43,19 +43,20 @@ Function getAddressRestoById($idR){
     return $result;
 }
 
-Function getRestoByOwnerMail($mail){
+function getRestoByMail($mail){
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare('SELECT nameR FROM resto WHERE ownerR =:mail');
+        $statement = $cnx->prepare('SELECT * FROM resto WHERE ownerR =:mail');
         $statement->bindValue(':mail', $mail, PDO::PARAM_STR);
         $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
     }
     return $result;
 }
+
 
 Function addResto($nameR, $ownerR, $hourOpenR, $hourCloseR, $phoneR) {
     try {
