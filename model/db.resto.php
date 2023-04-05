@@ -7,7 +7,7 @@ Function getResto(){
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT * FROM resto');
         $statement->execute();
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();

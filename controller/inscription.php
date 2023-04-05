@@ -35,7 +35,7 @@ if($inscrit){
     $title = "Connexion";
     include "$racine/controller/connexion.php";
 } else {
-    $title = "Inscription";
+    $title = "HuberEat | Inscription";
     include "$racine/view/viewInscription.php";
     include "$racine/view/layout.php";
 }

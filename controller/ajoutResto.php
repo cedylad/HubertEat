@@ -46,7 +46,7 @@ if(isset($_POST['nameR']) && isset($_POST['hourOpenR']) && isset($_POST['hourClo
 }
 
 if($ajoutResto){
-    $title = "Profil";
+    $title = "HuberEat | Profil";
     include "$racine/controller/profil.php";
 } else {
     $title = "Ajout restaurant";

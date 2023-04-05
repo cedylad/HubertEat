@@ -22,6 +22,6 @@ $boutonAjoutResto = $utilisateur["typeU"];
 $prenom = $utilisateur["firstNameU"];
 $nom = $utilisateur["lastNameU"];
         
-$title = "Mon profil";
+$title = "HuberEat | Mon profil";
 include "$racine/view/viewProfil.php";
 include "$racine/view/layout.php";

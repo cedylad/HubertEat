@@ -2,11 +2,12 @@
 
 include_once "db.hubereat.php";
 
-Function getUsers(){
+function getUsers(){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT * FROM users');
-        $result = $statement->execute();
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
@@ -46,18 +47,21 @@ Function addUser($lastName, $firstName, $mail, $password) {
     return $resultat;
 }
 
-Function getUserByType($type){
+function getUsersByType($type){
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare('SELECT mailU FROM users WHERE typeU=:type');
-        $statement->bindValue(':type', $type, PDO::PARAM_STR);
+        $statement = $cnx->prepare('SELECT u.*, r.* FROM users u LEFT JOIN resto r ON u.mailU = r.idR WHERE u.typeU=:type');
+        $statement->bindValue(':type', $type, PDO::PARAM_INT);
         $statement->execute();
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
     }
     return $result;
 }
+
+
+
 
 

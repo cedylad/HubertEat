@@ -20,7 +20,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./?action=home">Accueil</a>
+          <a class="nav-link active" href="./?action=restaurant">Les restaurants</a>
+        </li>
+        <li>
+        <a class="nav-link active" href="./?action=restaurateur">Les restaurateurs</a>
         </li>
       </ul>
       <ul>

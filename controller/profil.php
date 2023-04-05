@@ -17,12 +17,12 @@ if (isLoggedOn()) {
     $prenom = $utilisateur["firstNameU"];
     $nom = $utilisateur["lastNameU"];
  
-    $title = "Mon profil";
+    $title = "HuberEat | Profil";
     include "$racine/view/viewProfil.php";
     include "$racine/view/layout.php";
 
 } else {
-    $title = "Connexion";
+    $title = "HuberEeat | Connexion";
     include "$racine/controller/connexion.php";
 }
 

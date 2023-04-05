@@ -4,6 +4,7 @@ function controleurPrincipal($action) {
     $lesActions = array();
     $lesActions["defaut"] = "home.php";
     $lesActions["home"] = "home.php";
+    $lesActions["resturant"] = "home.php";
     $lesActions["connexion"] = "connexion.php";
     $lesActions["inscription"] = "inscription.php";
     $lesActions["deconnexion"] = "deconnexion.php";
@@ -11,6 +12,7 @@ function controleurPrincipal($action) {
     $lesActions["afficherResto"] = "afficherResto.php";
     $lesActions["ajoutResto"] = "ajoutResto.php";
     $lesActions["deleteResto"] = "deleteResto.php";
+    $lesActions["restaurateur"] = "restaurateur.php";
         /**
     * ----------------------------------------------------------------------------------------
     * Admin */

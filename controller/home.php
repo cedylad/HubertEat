@@ -5,7 +5,7 @@ if ( $_SERVER["SCRIPT_FILENAME"] == __FILE__ ){
 include_once "$racine/model/db.resto.php";
 
     $lesRestos = getResto();
-    $title = "HuberEat";
+    $title = "HuberEat | Accueil";
     include "$racine/view/viewHome.php";
     include "$racine/view/layout.php";
 ?>
