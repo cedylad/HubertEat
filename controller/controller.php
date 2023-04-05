@@ -13,6 +13,7 @@ function controleurPrincipal($action) {
     $lesActions["ajoutResto"] = "ajoutResto.php";
     $lesActions["deleteResto"] = "deleteResto.php";
     $lesActions["restaurateur"] = "restaurateur.php";
+    $lesActions["ajoutPlat"] = "ajoutPlat.php";
         /**
     * ----------------------------------------------------------------------------------------
     * Admin */

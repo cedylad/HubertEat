@@ -2,7 +2,7 @@
 
 include_once "db.hubereat.php";
 
-Function getResto(){
+function getResto(){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT * FROM resto');
@@ -15,7 +15,7 @@ Function getResto(){
     return $result;
 }
 
-Function getRestoById($idR){
+function getRestoById($idR){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT * FROM resto WHERE idR=:idR');
@@ -29,7 +29,7 @@ Function getRestoById($idR){
     return $result;
 }
 
-Function getAddressRestoById($idR){
+function getAddressRestoById($idR){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT * FROM address WHERE idR=:idR');
@@ -58,7 +58,7 @@ function getRestoByMail($mail){
 }
 
 
-Function addResto($nameR, $ownerR, $hourOpenR, $hourCloseR, $phoneR, $imgR) {
+function addResto($nameR, $ownerR, $hourOpenR, $hourCloseR, $phoneR, $imgR) {
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare("INSERT INTO resto (nameR, ownerR, hourOpenR, hourCloseR, phoneR, imgR) VALUES (:nameR, :ownerR, :hourOpenR, :hourCloseR, :phoneR, :imgR)");
@@ -78,7 +78,7 @@ Function addResto($nameR, $ownerR, $hourOpenR, $hourCloseR, $phoneR, $imgR) {
 }
 
 
-Function addAddressResto($cityA, $countryA, $idR) {
+function addAddressResto($cityA, $countryA, $idR) {
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('INSERT INTO address (cityA, countryA, idR) VALUES(:cityA, :countryA, :idR)');
@@ -93,7 +93,7 @@ Function addAddressResto($cityA, $countryA, $idR) {
     return $resultat;
 }
 
-Function getLastIdResto() {
+function getLastIdResto() {
     try {
         $cnx = connexionPDO();
         $statement = $cnx->query('SELECT idR FROM resto ORDER BY idR DESC LIMIT 1');
@@ -108,7 +108,7 @@ Function getLastIdResto() {
     return null;
 }
 
-Function deleteResto($idR){
+function deleteResto($idR){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare("DELETE FROM address WHERE idR =:idR");
@@ -123,5 +123,22 @@ Function deleteResto($idR){
         die();
     }
 }
+
+function addPlat($nomP, $imgP, $restoR) {
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("INSERT INTO plat (nomP, imgP, restoR) VALUES (:nomP, :imgP, :restoR)");
+        $statement->bindValue(':nomP', $nomP, PDO::PARAM_STR);
+        $statement->bindValue(':imgP', $imgP, PDO::PARAM_STR);
+        $statement->bindValue(':restoR', $restoR, PDO::PARAM_INT);
+        $result = $statement->execute();
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+
 
 

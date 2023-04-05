@@ -15,7 +15,7 @@ function getUsers(){
     return $result;
 }
 
-Function getUserByMail($mail){
+function getUserByMail($mail){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT * FROM users WHERE mailU=:mail');
@@ -29,7 +29,7 @@ Function getUserByMail($mail){
     return $result;
 }
 
-Function addUser($lastName, $firstName, $mail, $password) {
+function addUser($lastName, $firstName, $mail, $password) {
     try {
         $cnx = connexionPDO();
 
