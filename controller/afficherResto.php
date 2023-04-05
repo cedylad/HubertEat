@@ -18,7 +18,7 @@ $addressResto = getAddressRestoById($idR);
 $villeR = $addressResto["cityA"];
 $paysR = $addressResto["countryA"];
 
-
 $title = $unResto['nameR'];
 include "$racine/view/viewAfficherResto.php";
 include "$racine/view/layout.php";
+

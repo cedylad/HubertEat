@@ -108,4 +108,20 @@ Function getLastIdResto() {
     return null;
 }
 
+Function deleteResto($idR){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("DELETE FROM address WHERE idR =:idR");
+        $statement2 = $cnx->prepare("DELETE FROM resto WHERE idR =:idR");
+        $statement->bindValue(':idR', $idR, PDO::PARAM_STR);
+        $statement2->bindValue(':idR', $idR, PDO::PARAM_STR);
+        $result = $statement->execute();
+        $result2 = $statement2->execute();
+        return $result && $result2;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
 

@@ -17,7 +17,6 @@ if (isLoggedOn()) {
     $prenom = $utilisateur["firstNameU"];
     $nom = $utilisateur["lastNameU"];
  
-
     $title = "Mon profil";
     include "$racine/view/viewProfil.php";
     include "$racine/view/layout.php";

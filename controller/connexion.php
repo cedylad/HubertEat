@@ -22,6 +22,7 @@ else
 login($mailU,$passwordU);
 
 if (isLoggedOn()){ // si l'utilisateur est connecté on redirige vers le controleur monProfil
+    header("Location: ./?action=profil");
     include "$racine/controller/profil.php";
 }
 else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion

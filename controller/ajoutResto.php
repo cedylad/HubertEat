@@ -35,6 +35,7 @@ if(isset($_POST['nameR']) && isset($_POST['hourOpenR']) && isset($_POST['hourClo
                 $return2 = addAddressResto($cityR, $countryR, $lastId);
                 if($return2) {
                     $ajoutResto = true;
+                    header("Location: ./?action=profil");
                 } else {
                     $msg = 'Erreur lors de l\'ajout de l\'adresse du restaurant';
                 }
@@ -52,12 +53,3 @@ if($ajoutResto){
     include "$racine/view/viewAjoutResto.php";
     include "$racine/view/layout.php";
 }
-
-var_dump($ajoutResto);
-echo "r1 :" ;
-var_dump($return1);
-echo "r2 :" ;
-var_dump($return2);
-var_dump($nameR, $ownerR, $hourOpenR, $hourCloseR, $phoneR, $imgR);
-
-

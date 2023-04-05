@@ -32,9 +32,11 @@ if(isset($_POST['lastName']) && isset($_POST['firstName']) && isset($_POST['mail
 
 if($inscrit){
     $title = "Connexion";
+    header("Location: ./?action=connexion");
     include "$racine/controller/connexion.php";
 } else {
     $title = "Inscription";
+    header("Location: ./?action=inscription");
     include "$racine/view/viewInscription.php";
     include "$racine/view/layout.php";
 }

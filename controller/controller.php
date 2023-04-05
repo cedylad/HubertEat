@@ -10,6 +10,7 @@ function controleurPrincipal($action) {
     $lesActions["profil"] = "profil.php";
     $lesActions["afficherResto"] = "afficherResto.php";
     $lesActions["ajoutResto"] = "ajoutResto.php";
+    $lesActions["deleteResto"] = "deleteResto.php";
         /**
     * ----------------------------------------------------------------------------------------
     * Admin */
