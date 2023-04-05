@@ -12,6 +12,7 @@ $util = getUserByMail($mailU);
 $idR = $_GET["idR"];
 $unResto = getRestoById($idR);
 $nomR = $unResto["nameR"];
+$photoR = $unResto["imgR"];
 
 $addressResto = getAddressRestoById($idR);
 $villeR = $addressResto["cityA"];

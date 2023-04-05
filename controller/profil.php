@@ -22,5 +22,8 @@ if (isLoggedOn()) {
     include "$racine/view/viewProfil.php";
     include "$racine/view/layout.php";
 
+} else {
+    $title = "Connexion";
+    include "$racine/controller/connexion.php";
 }
 

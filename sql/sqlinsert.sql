@@ -5,6 +5,7 @@ INSERT INTO typeUser(nameT) VALUES('Administrateur');
 INSERT INTO address(cityA, countryA, idR) VALUES('Paris', 'France', 1);
 INSERT INTO address(cityA, countryA, idR) VALUES('Nancy', 'France' 2);
 INSERT INTO address(cityA, countryA, idR) VALUES('Nancy', 'France' 2);
+INSERT INTO address(cityA, countryA, idR) VALUES('Paris', 'France', 11);
 
 INSERT INTO users(lastNameU, firstNameU, mailU, passwordU, typeU) VALUES('Brassens', 'Georges', 'bg@mail.fr', 'mdp', 1);
 
