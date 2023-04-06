@@ -5,7 +5,7 @@
 <?php foreach ($lesRestos as $resto){ ?>
 <div class="col-sm-4">
             <div class="card">
-                <img class="card-img-top" src="img/<?=$resto['imgR']?>" alt="Card image cap">
+                <img class="card-img-top" src="img/<?=$resto['imgR']?>" alt="<?=$resto['nameR']?>" height="300px" sttyle="object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title"><?=$resto['nameR']?></h5>
                     <hr>

@@ -23,7 +23,7 @@ if(isset($_POST['nameR']) && isset($_POST['hourOpenR']) && isset($_POST['hourClo
             $ownerR = $_SESSION["mailU"];
             // Traitement de l'image
             $imgName = uniqid() . '.' . pathinfo($imgR['name'], PATHINFO_EXTENSION); // Génère un nom unique pour l'image
-            $targetDir = "img/"; // Dossier pour enregistrer l'image
+            $targetDir = "img/resto/"; // Dossier pour enregistrer l'image
             $targetFile = $targetDir . $imgName;
             move_uploaded_file($imgR['tmp_name'], $targetFile); // Enregistre l'image dans le dossier
         

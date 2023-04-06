@@ -18,6 +18,8 @@ $addressResto = getAddressRestoById($idR);
 $villeR = $addressResto["cityA"];
 $paysR = $addressResto["countryA"];
 
+$lesPlats = getPlatByrestoR($idR);
+
 $title = "HuberEat | " . $unResto['nameR'];
 include "$racine/view/viewAfficherResto.php";
 include "$racine/view/layout.php";
