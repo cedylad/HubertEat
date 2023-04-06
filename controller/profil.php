@@ -9,8 +9,8 @@ include_once "$racine/model/db.resto.php";
 if (isLoggedOn()) {
     $mail = getMailULoggedOn();
     $restosbymail = getRestoByMail($mail);
-    $utilisateur = getUserByMail($mail);
     
+    $utilisateur = getUserByMail($mail);
     
     $boutonAjoutResto = $utilisateur["typeU"];
 
