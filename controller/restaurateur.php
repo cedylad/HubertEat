@@ -5,6 +5,14 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 include_once "$racine/model/db.resto.php";
 include_once "$racine/model/db.users.php";
 
+if (isLoggedOn()){
+$mailU = getMailULoggedOn();
+$util = getUserByMail($mailU);
+
+$prenom = $util["firstNameU"];
+$nom = $util["lastNameU"];
+}
+
 $userType = 1;
 $lesUsersType = getUsersByType($userType);
 $lesRestos = [];

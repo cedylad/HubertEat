@@ -9,6 +9,10 @@ include_once "$racine/model/db.resto.php";
 $mailU = getMailULoggedOn();
 $util = getUserByMail($mailU);
 
+$prenom = $util["firstNameU"];
+$nom = $util["lastNameU"];
+
+
 $idR = $_GET["idR"];
 $unResto = getRestoById($idR);
 $nomR = $unResto["nameR"];
