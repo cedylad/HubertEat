@@ -9,9 +9,9 @@
             <div class="row">
                 <h2> Les plats : </h2>
                 <?php foreach($lesPlats as $plat){?>
-                    <div class="col">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="img/plat/<?=$plat['imgP']?>" alt="<?=$plat['nomP']?>" height="300px" sttyle="object-fit: cover;">
+                    <div class="col-sm-4">
+                        <div class="card">
+                            <img class="card-img-top" src="img/plat/<?=$plat['imgP']?>" alt="<?=$plat['nomP']?>" height="350px" sttyle="object-fit:cover;">
                             <div class="card-body">
                                 <h5 class="card-title"><?=$plat['nomP']?></h5>
                                 <p class="card-text"><?=$plat['descP']?></p>

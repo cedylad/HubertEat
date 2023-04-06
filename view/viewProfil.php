@@ -21,11 +21,11 @@
                             <h5 class="card-title"><?=$resto['nameR']?></h5>
                             <a href="./?action=afficherResto&idR=<?=$resto['idR']?>" class="btn btn-primary">Voir le restaurant</a>
                             <?php if ($boutonAjoutResto == 1){ ?>
-                                <a href="./?action=ajoutPlat&idR=<?=$resto['idR']?>" class="btn btn-success">Ajouter un plat !</a>
+                                <a href="./?action=ajoutPlat&idR=<?=$resto['idR']?>" class="btn btn-success">Ajouter un plat</a>
                             <?php } ?>
                             <?php if ($boutonAjoutResto == 1 || $boutonAjoutResto == 3 ){ ?>
-                                <a href="./?action=ajoutPlat&idR=<?=$resto['idR']?>" class="btn btn-warning">Modifier le restaurant !</a>
-                                <a href="./?action=deleteResto&idR=<?=$resto['idR']?>" class="btn btn-danger">Supprimer !</a>
+                                <a href="./?action=ajoutPlat&idR=<?=$resto['idR']?>" class="btn btn-warning">Modifier le restaurant</a>
+                                <a href="./?action=deleteResto&idR=<?=$resto['idR']?>" class="btn btn-danger">Supprimer</a>
                             <?php } ?>
                         </div>
                     </div>
