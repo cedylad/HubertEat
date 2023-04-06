@@ -8,7 +8,7 @@ include_once "$racine/model/db.resto.php";
 
 $mailU = getMailULoggedOn();
 $util = getUserByMail($mailU);
-
+$userType = $util["typeU"];
 
 $idR = $_GET["idR"];
 $unResto = getRestoById($idR);
@@ -21,7 +21,13 @@ $paysR = $addressResto["countryA"];
 
 $lesPlats = getPlatByrestoR($idR);
 
-$title = "HuberEat | " . $unResto['nameR'];
-include "$racine/view/viewAfficherResto.php";
-include "$racine/view/layout.php";
+if ($userType == 3){
+    $title = "HuberEat | " . $unResto['nameR'];
+    include "$racine/view/viewAfficherResto.php";
+    include "$racine/view/layoutAdmin.php";
+} else {
+    $title = "HuberEat | " . $unResto['nameR'];
+    include "$racine/view/viewAfficherResto.php";
+    include "$racine/view/layout.php";
+}
 

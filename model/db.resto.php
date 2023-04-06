@@ -157,6 +157,18 @@ function getPlatByrestoR($restoR){
     return $result;
 }
 
+function deletePlat($idP){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("DELETE FROM plat WHERE idP =:idP");
+        $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
+        $result = $statement->execute();
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
 
 
 

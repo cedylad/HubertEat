@@ -21,9 +21,18 @@ else
 // traitement si necessaire des donnees recuperees
 login($mailU,$passwordU);
 
-if (isLoggedOn()){ // si l'utilisateur est connecté on redirige vers le controleur monProfil
+if (isLoggedOn()){
+    $admin = getUserByMail($mailU);
+    $userType = $admin["typeU"];
+
+    if($userType == 3){
+        header("Location: ./?action=adminResto");
+        include "$racine/controller/adminResto.php";
+
+    } if($userType == 1 || $userType == 2){
     header("Location: ./?action=profil");
     include "$racine/controller/profil.php";
+    }
 }
 else{ // l'utilisateur n'est pas connecté, on affiche le formulaire de connexion
     // appel du script de vue 

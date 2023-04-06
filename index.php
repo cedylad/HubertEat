@@ -12,6 +12,8 @@ if (isLoggedOn()) {
     $nom = $utilisateur["lastNameU"];
 }
 
+
+
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
 }

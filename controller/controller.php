@@ -14,11 +14,10 @@ function controleurPrincipal($action) {
     $lesActions["deleteResto"] = "deleteResto.php";
     $lesActions["restaurateur"] = "restaurateur.php";
     $lesActions["ajoutPlat"] = "ajoutPlat.php";
+    $lesActions["deletePlat"] = "deletePlat.php";
 
     /* PARTIE ADMIN */
-    $lesActions["adminResto"] = "adminResto.php";
-    $lesActions["adminUser"] = "adminUser.php";
-    
+    $lesActions["admin"] = "admin.php";
     
     if (array_key_exists($action, $lesActions)) {
         return $lesActions[$action];

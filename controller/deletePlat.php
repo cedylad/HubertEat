@@ -13,17 +13,17 @@ if (isLoggedOn()) {
 
     $userType = $utilisateur["typeU"];
     
-    if (isset($idR)){
-        deleteResto($idR);
-        if($userType == 3){
-            header("Location: ./?action=admin");
-            include "$racine/controller/admin.php";
-        } else {
-        header("Location: ./?action=profil");
-        exit();
-    }
-}
-}
+        if (isset($idR)){
+            deletePlat($idR);
+            if($userType == 3){
+                header("Location: ./?action=admin");
+                include "$racine/controller/admin.php";
+            } if (($userType == 1)) {
+                header("Location: ./?action=profil");
+                exit();
+            }
+        }
+}else {
 $boutonAjoutResto = $utilisateur["typeU"];
 $prenom = $utilisateur["firstNameU"];
 $nom = $utilisateur["lastNameU"];
@@ -31,3 +31,4 @@ $nom = $utilisateur["lastNameU"];
 $title = "HuberEat | Mon profil";
 include "$racine/view/viewProfil.php";
 include "$racine/view/layout.php";
+}

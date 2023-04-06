@@ -14,7 +14,7 @@
         <?php if ($boutonAjoutResto == 1 || $boutonAjoutResto == 3 ){ ?>
             <h2> Mes restaurants : </h2><br> 
             <?php foreach($restosbymail as $resto){ ?>
-                <div class="col-sm">
+                <div class="col-sm-5">
                     <div class="card">
                         <img class="card-img-top" src="img/resto/<?=$resto['imgR']?>" alt="<?=$resto['nameR']?>" height="300px%" sttyle="object-fit: cover";>
                         <div class="card-body">

@@ -16,6 +16,9 @@
                                 <h5 class="card-title"><?=$plat['nomP']?></h5>
                                 <p class="card-text"><?=$plat['descP']?></p>
                                 <a href="#" class="btn btn-primary">Commander</a>
+                                <?php if($userType == 3 || $userType == 1){ ?>
+                                    <a href="./?action=deletePlat&idR=<?=$plat['idP']?>" class="btn btn-danger">Supprimer</a>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>

@@ -11,32 +11,25 @@
   </head>
 
   <body> 
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-danger">
       <div class="container-fluid">
-        <a class="navbar-brand" href="./?action=home">HuberEat</a>
+        <a class="navbar-brand" href="./?action=admin">HuberEat | Administrateur </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link active" href="./?action=restaurant">Les restaurants</a>
-            </li>
-            <li>
-              <a class="nav-link active" href="./?action=restaurateur">Les restaurateurs</a>
-            </li>
           </ul>
 
           <?php if (isLoggedOn()) { ?>
 
           <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
               <?=$prenom . " " . $nom;?>
 
             </button>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="./?action=profil">Mon profil</a></li>
               <li><a class="dropdown-item" href="./?action=deconnexion">Se déconnecter</a></li>
             </ul>
           </div>
