@@ -1,6 +1,6 @@
 <?php
 
-function controleurPrincipal($action) {
+function controller($action){
     $lesActions = array();
     $lesActions["defaut"] = "home.php";
     $lesActions["home"] = "home.php";

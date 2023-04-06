@@ -21,5 +21,5 @@ else {
     $action = "defaut";
 }
 
-$fichier = controleurPrincipal($action);
+$fichier = controller($action);
 include "$racine/controller/$fichier";
