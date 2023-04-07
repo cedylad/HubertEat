@@ -171,5 +171,37 @@ function deletePlat($idP){
     }
 }
 
+function commanderPlat($idP, $mailU){
+    try{
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("INSERT INTO commande (idP, mailU) VALUES (:idP, :mailU)");
+        $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
+        $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
+        $result = $statement->execute();
+        return $result;
+
+    } catch (PDOExeception $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+
+function getCommandeByMailU($mailU){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare('SELECT commande.*, plat.nomP, plat.prixP FROM commande JOIN plat ON commande.idP = plat.idP WHERE mailU =:mail');
+        $statement->bindValue(':mail', $mailU, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+
+
 
 

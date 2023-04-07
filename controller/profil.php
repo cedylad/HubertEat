@@ -10,6 +10,7 @@ if (isLoggedOn()) {
     $mail = getMailULoggedOn();
     $restosbymail = getRestoByMail($mail);
     $utilisateur = getUserByMail($mail);
+    $commandeClient = getCommandeByMailU($mail);
     $boutonAjoutResto = $utilisateur["typeU"];
     $prenom = $utilisateur["firstNameU"];
     $nom = $utilisateur["lastNameU"];

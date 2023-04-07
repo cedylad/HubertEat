@@ -16,7 +16,7 @@
                                 <h5 class="card-title"><?=$plat['nomP']?></h5>
                                 <p class="card-text"><?= number_format($plat['prixP'], 2) ?> €</p>
                                 <p class="card-text"><?=$plat['descP']?></p>
-                                <a href="#" class="btn btn-primary">Commander</a>
+                                <a href="./?action=commanderPlat&idP=<?=$plat['idP']?>" class="btn btn-primary">Commander</a>
                                 <?php if($userType == 3 || $userType == 1){ ?>
                                     <a href="./?action=deletePlat&idR=<?=$plat['idP']?>" class="btn btn-danger">Supprimer</a>
                                 <?php } ?>

@@ -15,7 +15,8 @@ function controller($action) {
         "deleteResto" => "deleteResto.php",
         "restaurateur" => "restaurateur.php",
         "ajoutPlat" => "ajoutPlat.php",
-        "deletePlat" => "deletePlat.php"
+        "deletePlat" => "deletePlat.php",
+        "commanderPlat" => "commanderPlat.php"
     );
 
     if (isLoggedOn()) {
