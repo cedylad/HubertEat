@@ -47,7 +47,6 @@ function controller($action) {
             $lesActions["resturant"] = "admin.php";
             $lesActions["connexion"] = "admin.php";
             $lesActions["inscription"] = "admin.php";
-            $lesActions["deconnexion"] = "admin.php";
             $lesActions["profil"] = "admin.php";
             $lesActions["ajoutResto"] = "admin.php";
             $lesActions["deleteResto"] = "admin.php";
@@ -65,4 +64,3 @@ function controller($action) {
     }
 }
 
-?>
