@@ -10,6 +10,9 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $user['lastNameU'] . " " . $user['firstNameU'] ?></h5>
                     <p class="card-text"><?= $user['mailU'] ?> </p>
+                    <p class="card-text"><?= $user['typeU'] ?> </p>
+                    <hr>
+                    <a href="./?action=deleteUser&mailU=<?= $user['mailU'] ?>">Supprimer l'utilisateur</a>
                     <hr>
                     <?php
                     foreach ($lesRestoParIdR as $resto) {
@@ -24,7 +27,7 @@
                         foreach ($lesPlatsByIdP as $plat) {
                         ?>
                             <?= $plat['nomP'] ?>
-                            <a href="./?action=deletePlat&idR=<?= $plat['idP'] ?>">Supprimer</a>
+                            <a href="./?action=deletePlat&idP=<?= $plat['idP'] ?>">Supprimer</a>
                             <br>
                         <?php
                             }

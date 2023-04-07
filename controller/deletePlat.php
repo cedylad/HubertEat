@@ -7,14 +7,15 @@ include_once "$racine/model/db.resto.php";
 
 if (isLoggedOn()) {
     $idR = $_GET['idR'];
+    $idP = $_GET['idP'];
     $mail = getMailULoggedOn();
     $restosbymail = getRestoByMail($mail);
     $utilisateur = getUserByMail($mail);
 
     $userType = $utilisateur["typeU"];
     
-        if (isset($idR)){
-            deletePlat($idR);
+        if (isset($idP)){
+            deletePlat($idP);
             if($userType == 3){
                 header("Location: ./?action=admin");
                 include "$racine/controller/admin.php";

@@ -49,10 +49,12 @@ function controller($action) {
             $lesActions["inscription"] = "admin.php";
             $lesActions["profil"] = "admin.php";
             $lesActions["ajoutResto"] = "admin.php";
-            $lesActions["deleteResto"] = "admin.php";
+            $lesActions["afficherResto"] = "afficherResto.php";
+            $lesActions["deleteResto"] = "deleteResto.php";
             $lesActions["restaurateur"] = "admin.php";
             $lesActions["ajoutPlat"] = "admin.php";
-            $lesActions["deletePlat"] = "admin.php";
+            $lesActions["deletePlat"] = "deletePlat.php";
+            $lesActions["deleteUser"] = "deleteUser.php";
         }
     }
 
