@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
-<h2>Voici les restaurateurs disponibles sur HuberEat :</h2>
+<br>
+<h2>CONTROL PANNEL : SUPERVISION </h2>
 <br>
 <div class="row">
     <?php foreach ($lesUsers as $user) {
