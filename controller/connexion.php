@@ -26,8 +26,8 @@ if (isLoggedOn()){
     $userType = $admin["typeU"];
 
     if($userType == 3){
-        header("Location: ./?action=adminResto");
-        include "$racine/controller/adminResto.php";
+        header("Location: ./?action=admin");
+        include "$racine/controller/admin.php";
 
     } if($userType == 1 || $userType == 2){
     header("Location: ./?action=profil");
