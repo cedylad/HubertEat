@@ -14,3 +14,6 @@ INSERT INTO resto(nameR, ownerR, hourOpenR, hourCloseR, phoneR) VALUES("La Médu
 
 INSERT INTO resto(nameR, ownerR, hourOpenR, hourCloseR, addressR, phoneR) VALUES("Le Soleil", , '09h00', '18h00', 1, '0123456789');
 INSERT INTO resto(nameR, ownerR, hourOpenR, hourCloseR, addressR, phoneR) VALUES("L'aristocrate", 2, '10h00', '22h00', 2, '0123456789');
+
+INSERT into commande(idP, mailU) VALUES(12, 'willsmith@mail.fr')
+INSERT into commande(idP, mailU, livraison) VALUES(12, 'willsmith@mail.fr', true)

@@ -127,11 +127,12 @@ function deleteResto($idR){
     }
 }
 
-function addPlat($nomP, $descP, $imgP, $restoR) {
+function addPlat($nomP, $prixP, $descP, $imgP, $restoR) {
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare("INSERT INTO plat (nomP, descP, imgP, restoR) VALUES (:nomP, :descP, :imgP, :restoR)");
+        $statement = $cnx->prepare("INSERT INTO plat (nomP, prixP, descP, imgP, restoR) VALUES (:nomP, :prixP, :descP, :imgP, :restoR)");
         $statement->bindValue(':nomP', $nomP, PDO::PARAM_STR);
+        $statement->bindValue(':prixP', $prixP, PDO::PARAM_STR);
         $statement->bindValue(':imgP', $imgP, PDO::PARAM_STR);
         $statement->bindValue(':descP', $descP, PDO::PARAM_STR);
         $statement->bindValue(':restoR', $restoR, PDO::PARAM_INT);

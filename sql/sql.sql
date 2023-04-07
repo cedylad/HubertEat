@@ -35,3 +35,19 @@ CREATE TABLE plat (
     restoR INT,
     FOREIGN KEY (restoR) REFERENCES resto (idR)
 );
+
+un CLIENT COMMANDE un plat et attend que la RESTAURATEUR valide
+
+Si le RESTAURATEUR valide alors la COMMANDE est AFFICHER sur son PROFIL
+
+idCommance, idPlat, mailU, livraisonCommande (boolean), 
+
+
+CREATE TABLE commande (
+    idC INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    idP INT, 
+    mailU varchar(30), 
+    livraison boolean DEFAULT false, 
+    FOREIGN KEY (idP) REFERENCES plat (idP),
+    FOREIGN KEY (mailU) REFERENCES users (mailU)
+)

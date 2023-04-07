@@ -6,6 +6,10 @@
         <input type="text" class="form-control" name="nomP" required>
     </div>
     <div class="form-group">
+        <label>Prix du plat (€)</label>
+        <input type="number" class="form-control" name="prixP" min="0" step="0.01" required>
+    </div>
+    <div class="form-group">
         <label>Description du plat</label>
         <input type="text" class="form-control" name="descP" required>
     </div>
