@@ -51,3 +51,12 @@ CREATE TABLE commande (
     FOREIGN KEY (idP) REFERENCES plat (idP),
     FOREIGN KEY (mailU) REFERENCES users (mailU)
 )
+
+CREATE TABLE banque (
+    idB INT PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    argent varchar(30)
+);
+
+ALTER TABLE users
+ADD idB INT,
+ADD FOREIGN KEY (idB) REFERENCES banque(idB);

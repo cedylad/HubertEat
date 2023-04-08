@@ -3,7 +3,7 @@
     <img class="card-img-top" src="img/resto/<?=$photoR?>" height="200px" width="300px" alt="Card image cap" style="object-fit:cover;">
     <div class="card-body">
         <h1 class="card-title">Restaurant <?=$nomR?></h1>
-        <p class="card-text">Ville : <?=$villeR?><br>Pays : <?=$paysR?></p>
+        <p class="card-text">Ville : <?=$villeR?><br>Pays : <?=$paysR?><br>Assistance : <a href="mailto:<?=$mailRestaurateur?>"><?=$mailRestaurateur?></a></p>
         <?php if(isset($lesPlats)){?>
           <hr>
             <div class="row">
@@ -11,7 +11,9 @@
                 <?php foreach($lesPlats as $plat){?>
                     <div class="col-sm-4">
                         <div class="card">
-                            <img class="card-img-top" src="img/plat/<?=$plat['imgP']?>" alt="<?=$plat['nomP']?>" height="350px" sttyle="object-fit:cover;">
+                            <a href="./?action=commanderPlat&idP=<?=$plat['idP']?>">
+                                <img class="card-img-top" src="img/plat/<?=$plat['imgP']?>" alt="<?=$plat['nomP']?>" height="200px" sttyle="object-fit:cover;">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title"><?=$plat['nomP']?></h5>
                                 <p class="card-text"><?= number_format($plat['prixP'], 2) ?> €</p>

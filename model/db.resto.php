@@ -144,6 +144,22 @@ function addPlat($nomP, $prixP, $descP, $imgP, $restoR) {
     }
 }
 
+
+function getPrixPlatById($idP){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("SELECT prixP FROM plat WHERE idP = :idP");
+        $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $result;
+
+}
+
 function getPlatByrestoR($restoR){
     try {
         $cnx = connexionPDO();
@@ -171,16 +187,35 @@ function deletePlat($idP){
     }
 }
 
-function commanderPlat($idP, $mailU){
-    try{
+function commanderPlat($idP, $mailU, $prixPlat) {
+    try {
         $cnx = connexionPDO();
+
+        // Vérifie le solde de du user
+        $statement = $cnx->prepare("SELECT soldeU FROM users WHERE mailU = :mailU");
+        $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
+        $statement->execute();
+        $soldeActuel = $statement->fetchColumn();
+        
+        if ($soldeActuel < $prixPlat) {
+            return false; // solde insufisant
+        }
+
+        // prixP - SoludeU
+        $statement = $cnx->prepare("UPDATE users SET soldeU = soldeU - :prixPlat WHERE mailU = :mailU");
+        $statement->bindValue(':prixPlat', $prixPlat, PDO::PARAM_STR);
+        $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
+        $statement->execute();
+
+        // Add plat dans la table commande
         $statement = $cnx->prepare("INSERT INTO commande (idP, mailU) VALUES (:idP, :mailU)");
         $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
         $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
         $result = $statement->execute();
+        
         return $result;
 
-    } catch (PDOExeception $e) {
+    } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
     }

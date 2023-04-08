@@ -14,6 +14,7 @@ $idR = $_GET["idR"];
 $unResto = getRestoById($idR);
 $nomR = $unResto["nameR"];
 $photoR = $unResto["imgR"];
+$mailRestaurateur = $unResto["ownerR"];
 
 $addressResto = getAddressRestoById($idR);
 $villeR = $addressResto["cityA"];

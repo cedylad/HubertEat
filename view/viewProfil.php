@@ -4,6 +4,10 @@
 Nom : <?= $nom; ?> 
 <br>
 Prénom : <?= $prenom; ?>
+<br>
+<?php if ($boutonAjoutResto == 2){ ?>
+Solde : <?= $solde; ?> €
+<?php } ?>
 <hr>
 
 <?php if ($boutonAjoutResto == 1){ ?>

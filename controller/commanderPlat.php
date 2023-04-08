@@ -10,9 +10,11 @@ $msg="";
     if (isLoggedOn()) {
         
         $mailU = getMailULoggedOn();
-        $idP = $_GET['idP']; // Récupération de l'id du plat courant depuis l'URL
+        $idP = $_GET['idP']; 
+        $prixPlat = getPrixPlatById($idP);
+        $prix = $prixPlat["prixP"];
 
-        $return = commanderPlat($idP, $mailU);
+        $return = commanderPlat($idP, $mailU, $prix);
         if($return) {
             $commande = true;
         } else {
@@ -26,7 +28,7 @@ if($commande){
     header("Location: ./?action=profil");
     exit();
 } else {
-    $title = "HuberEat | Ajout plat";
+    $title = "HuberEat | Erreur";
     include "$racine/view/viewcommande.php";
     include "$racine/view/layout.php";
 }

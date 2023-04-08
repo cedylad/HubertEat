@@ -14,6 +14,7 @@ if (isLoggedOn()) {
     $boutonAjoutResto = $utilisateur["typeU"];
     $prenom = $utilisateur["firstNameU"];
     $nom = $utilisateur["lastNameU"];
+   $solde = $utilisateur["soldeU"];
 
     if($boutonAjoutResto == 1 || $boutonAjoutResto == 2){
  
