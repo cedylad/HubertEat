@@ -38,19 +38,31 @@ Solde : <?= $solde; ?> €
                 </div>
             </div>
         <?php } ?>
+        <hr>
     </div>
     
+    <h2> Mes commandes en attente : </h2> 
+    <div class="row">
+        <?php foreach($lesCommandes as $uneCommande){ ?>
+        <div class="col-sm-4 mb-2">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    Commande n°<?=$uneCommande["idC"];?><br>
+                    <a href="./?action=validerCommande&idC=<?=$uneCommande['idC']?>" class="btn btn-success">Valider</a>
+                    <a href="./?action=refuserCommande&idC=<?=$uneCommande['idC']?>" class="btn btn-danger">Refuser</a>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+    </div>
     <?php } else { ?>
-    
         <h2> Mes commandes : </h2>
-        <div class="row">
-    
             <?php foreach($commandeClient as $commande){ ?>
         
                 <div class="col-sm-4 mb-2">
                     <div class="card" style="width: 18rem;">
                         <div class="card-header">
-                            Commande n° : <?=$commande["idC"]?> | Prix : <?=$commande["prixP"]?> €
+                            Commande n°<?=$commande["idC"]?> | Prix : <?=$commande["prixP"]?> €
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Plat : <?=$commande["nomP"]?></li>

@@ -16,7 +16,9 @@ function controller($action) {
         "restaurateur" => "restaurateur.php",
         "ajoutPlat" => "ajoutPlat.php",
         "deletePlat" => "deletePlat.php",
-        "commanderPlat" => "commanderPlat.php"
+        "commanderPlat" => "commanderPlat.php",
+        "validerCommande" => "validerCommande.php",
+        "refuserCommande" => "refuserCommande.php",
     );
 
     if (isLoggedOn()) {
@@ -39,6 +41,7 @@ function controller($action) {
             $lesActions["restaurateur"] = "restaurateur.php";
             $lesActions["ajoutPlat"] = "ajoutPlat.php";
             $lesActions["deletePlat"] = "deletePlat.php";
+            $lesActions["refuserCommande"] =  "refuserCommande.php";
         }
 
         if($typeU == 3){
@@ -55,7 +58,6 @@ function controller($action) {
             $lesActions["restaurateur"] = "admin.php";
             $lesActions["ajoutPlat"] = "admin.php";
             $lesActions["deletePlat"] = "deletePlat.php";
-            $lesActions["deleteUser"] = "deleteUser.php";
         }
     }
 

@@ -16,7 +16,7 @@
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title"><?=$plat['nomP']?></h5>
-                                <p class="card-text"><?= number_format($plat['prixP'], 2) ?> €</p>
+                                <p class="card-text"><?= number_format(floatval($plat['prixP']), 2) ?> €</p>
                                 <p class="card-text"><?=$plat['descP']?></p>
                                 <a href="./?action=commanderPlat&idP=<?=$plat['idP']?>" class="btn btn-primary">Commander</a>
                                 <?php if($userType == 3 || $userType == 1){ ?>

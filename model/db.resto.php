@@ -191,23 +191,24 @@ function commanderPlat($idP, $mailU, $prixPlat) {
     try {
         $cnx = connexionPDO();
 
-        // Vérifie le solde de du user
+        // Vérifie le solde du user
         $statement = $cnx->prepare("SELECT soldeU FROM users WHERE mailU = :mailU");
         $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
         $statement->execute();
         $soldeActuel = $statement->fetchColumn();
         
         if ($soldeActuel < $prixPlat) {
-            return false; // solde insufisant
+            return false; // solde insuffisant
         }
 
-        // prixP - SoludeU
+
+        // Met à jour le solde de l'utilisateur
         $statement = $cnx->prepare("UPDATE users SET soldeU = soldeU - :prixPlat WHERE mailU = :mailU");
         $statement->bindValue(':prixPlat', $prixPlat, PDO::PARAM_STR);
         $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
         $statement->execute();
 
-        // Add plat dans la table commande
+        // Ajoute le plat dans la table commande
         $statement = $cnx->prepare("INSERT INTO commande (idP, mailU) VALUES (:idP, :mailU)");
         $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
         $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
@@ -220,6 +221,7 @@ function commanderPlat($idP, $mailU, $prixPlat) {
         die();
     }
 }
+
 
 
 function getCommandeByMailU($mailU){
@@ -237,6 +239,58 @@ function getCommandeByMailU($mailU){
 }
 
 
+function getCommandeByLivraison() {
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("SELECT * FROM commande WHERE livraison = '0'");
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
 
 
+function validerCommande($idC) {
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("UPDATE commande SET livraison = '1' WHERE idC = :idC");
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
 
+function refuserCommande($idC) {
+    try {
+        $cnx = connexionPDO();
+        // Récupère le prixP
+        $statement = $cnx->prepare("SELECT prixP FROM commande JOIN plat ON commande.idP = plat.idP WHERE idC = :idC");
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $statement->execute();
+        $montant = $statement->fetchColumn();
+
+        // Ajoute le montant au solde du client
+        $statement = $cnx->prepare("UPDATE users SET soldeU = soldeU + :prixP WHERE mailU = (SELECT mailU FROM commande WHERE idC = :idC)");
+        $statement->bindValue(':prixP', $montant, PDO::PARAM_STR);
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $result = $statement->execute();
+        
+        // Marque la commande comme remboursée = rembourse le client par le prixP
+        $statement = $cnx->prepare("UPDATE commande SET livraison = '2' WHERE idC = :idC");
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $statement->execute();
+        
+        return $result;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}

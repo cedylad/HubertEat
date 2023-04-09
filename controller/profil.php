@@ -16,6 +16,7 @@ if (isLoggedOn()) {
     $nom = $utilisateur["lastNameU"];
    $solde = $utilisateur["soldeU"];
 
+    $lesCommandes = getCommandeByLivraison();
     if($boutonAjoutResto == 1 || $boutonAjoutResto == 2){
  
         $title = "HuberEat | Profil";
