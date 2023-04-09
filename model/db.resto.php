@@ -61,7 +61,8 @@ function getRestoByMail($mail){
 function addResto($nameR, $ownerR, $hourOpenR, $hourCloseR, $phoneR, $imgR) {
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare("INSERT INTO resto (nameR, ownerR, hourOpenR, hourCloseR, phoneR, imgR) VALUES (:nameR, :ownerR, :hourOpenR, :hourCloseR, :phoneR, :imgR)");
+        $statement = $cnx->prepare("INSERT INTO resto (nameR, ownerR, hourOpenR, hourCloseR, phoneR, imgR) 
+        VALUES (:nameR, :ownerR, :hourOpenR, :hourCloseR, :phoneR, :imgR)");
         $statement->bindValue(':nameR', $nameR, PDO::PARAM_STR);
         $statement->bindValue(':ownerR', $ownerR, PDO::PARAM_STR);
         $statement->bindValue(':hourOpenR', $hourOpenR, PDO::PARAM_STR);
@@ -187,7 +188,7 @@ function deletePlat($idP){
     }
 }
 
-function commanderPlat($idP, $mailU, $prixPlat) {
+function commanderPlat($idP, $mailU, $prixP) {
     try {
         $cnx = connexionPDO();
 
@@ -197,14 +198,13 @@ function commanderPlat($idP, $mailU, $prixPlat) {
         $statement->execute();
         $soldeActuel = $statement->fetchColumn();
         
-        if ($soldeActuel < $prixPlat) {
+        if ($soldeActuel < $prixP) {
             return false; // solde insuffisant
         }
 
-
         // Met à jour le solde de l'utilisateur
-        $statement = $cnx->prepare("UPDATE users SET soldeU = soldeU - :prixPlat WHERE mailU = :mailU");
-        $statement->bindValue(':prixPlat', $prixPlat, PDO::PARAM_STR);
+        $statement = $cnx->prepare("UPDATE users SET soldeU = soldeU - :prixP WHERE mailU = :mailU");
+        $statement->bindValue(':prixP', $prixP, PDO::PARAM_STR);
         $statement->bindValue(':mailU', $mailU, PDO::PARAM_STR);
         $statement->execute();
 
@@ -219,15 +219,11 @@ function commanderPlat($idP, $mailU, $prixPlat) {
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
-    }
-}
-
-
-
-function getCommandeByMailU($mailU){
+    }function getCommandeByMailU($mailU){
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare('SELECT commande.*, plat.nomP, plat.prixP FROM commande JOIN plat ON commande.idP = plat.idP WHERE mailU =:mail');
+        $statement = $cnx->prepare('SELECT commande.*, plat.nomP, plat.prixP FROM commande JOIN plat 
+        ON commande.idP = plat.idP WHERE mailU = :mail ORDER BY commande.dateC DESC');
         $statement->bindValue(':mail', $mailU, PDO::PARAM_STR);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -238,11 +234,28 @@ function getCommandeByMailU($mailU){
     }
 }
 
+}
+
+function getCommandeByMailU($mailU){
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare('SELECT commande.*, plat.nomP, plat.prixP FROM commande JOIN plat 
+        ON commande.idP = plat.idP WHERE mailU = :mail ORDER BY commande.dateC DESC');
+        $statement->bindValue(':mail', $mailU, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
 
 function getCommandeByLivraison() {
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare("SELECT * FROM commande WHERE livraison = '0'");
+        $statement = $cnx->prepare("SELECT commande.*, plat.*, users.* FROM commande JOIN plat ON commande.idP = plat.idP JOIN users 
+        ON commande.mailU = users.mailU WHERE commande.livraison = '0'");
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;

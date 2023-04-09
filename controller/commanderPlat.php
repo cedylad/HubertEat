@@ -12,7 +12,7 @@ $msg="";
         $mailU = getMailULoggedOn();
         $idP = $_GET['idP']; 
         $prixPlat = getPrixPlatById($idP);
-        $prix = is_float($prixPlat['prixP']);
+        $prix = $prixPlat['prixP'];
 
         $return = commanderPlat($idP, $mailU, $prix);
         if($return) {

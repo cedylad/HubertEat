@@ -19,6 +19,7 @@ function controller($action) {
         "commanderPlat" => "commanderPlat.php",
         "validerCommande" => "validerCommande.php",
         "refuserCommande" => "refuserCommande.php",
+        "ajoutSolde" => "ajoutSolde.php",
     );
 
     if (isLoggedOn()) {
@@ -42,6 +43,7 @@ function controller($action) {
             $lesActions["ajoutPlat"] = "ajoutPlat.php";
             $lesActions["deletePlat"] = "deletePlat.php";
             $lesActions["refuserCommande"] =  "refuserCommande.php";
+           $lesActions["ajoutSolde"] = "ajoutSolde.php";
         }
 
         if($typeU == 3){

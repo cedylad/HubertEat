@@ -6,7 +6,8 @@ Nom : <?= $nom; ?>
 Prénom : <?= $prenom; ?>
 <br>
 <?php if ($boutonAjoutResto == 2){ ?>
-Solde : <?= $solde; ?> €
+Solde : <?= $solde; ?> € <br>
+<a href="./?action=ajoutSolde" class="btn btn-secondary btn-lg">Ajouter de l'argent</a>
 <?php } ?>
 <hr>
 
@@ -47,7 +48,10 @@ Solde : <?= $solde; ?> €
         <div class="col-sm-4 mb-2">
             <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                    Commande n°<?=$uneCommande["idC"];?><br>
+                    Commande n°<?=$uneCommande["idC"];?> un plat de <?=$uneCommande["nomP"]?>
+                    <hr>
+                    Par <?=$uneCommande["firstNameU"]. " " . $uneCommande["lastNameU"]?>
+                    <hr>
                     <a href="./?action=validerCommande&idC=<?=$uneCommande['idC']?>" class="btn btn-success">Valider</a>
                     <a href="./?action=refuserCommande&idC=<?=$uneCommande['idC']?>" class="btn btn-danger">Refuser</a>
                 </div>

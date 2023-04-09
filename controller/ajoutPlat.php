@@ -24,14 +24,16 @@ if(isset($_POST['nomP']) && isset($_POST['prixP']) && isset($_POST['descP']) && 
         //Traitement du pxi
         $prixFianl = floatval(str_replace(',', '.', $prixP));
         
-        $idR = $_GET['idR']; // Récupération de l'id du restaurant courant depuis l'URL
-        $return = addPlat($nomP, $prixFianl, $descP, $imgName, $idR); // Utilisation du nom de l'image sans le chemin pour l'ajout dans la BDD
-        if($return) {
-            $ajoutPlat = true;
-        } else {
-            $msg = 'Erreur lors de l\'ajout du plat';
-        }
-    }   
+        if(isset($_GET['idR'])){
+            $idR = $_GET['idR']; // Récupération de l'id du restaurant courant depuis l'URL
+            $return = addPlat($nomP, $prixFianl, $descP, $imgName, $idR); // Utilisation du nom de l'image sans le chemin pour l'ajout dans la BDD
+            if($return) {
+                $ajoutPlat = true;
+            } else {
+                $msg = 'Erreur lors de l\'ajout du plat';
+            }
+        }   
+    }
 }
 
 if($ajoutPlat){

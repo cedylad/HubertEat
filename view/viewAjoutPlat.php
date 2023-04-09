@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <h2>Ajouter un plat</h2>
-<form method="post" enctype="multipart/form-data">
+<form action="./?action=ajoutPlat&idR=<?=($_GET['idR']);?>" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label>Nom du plat</label>
         <input type="text" class="form-control" name="nomP" required>
@@ -17,8 +17,6 @@
         <label>Image du plat</label>
         <input type="file" class="form-control" name="imgP" required>
     </div>
-    <!-- Ajout du champ caché -->
-    <input type="hidden" name="idR" value="<?php echo htmlspecialchars($_GET['idR']) ?>">
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 

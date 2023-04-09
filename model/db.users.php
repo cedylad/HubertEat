@@ -88,5 +88,18 @@ function deleteUser($mailU){
     }
 }
 
+function addSolde($solde, $mail) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare('UPDATE users SET soldeU = soldeU + :solde WHERE mailU = :mail');
+        $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $req->bindValue(':solde', $solde, PDO::PARAM_STR);
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
 
 
