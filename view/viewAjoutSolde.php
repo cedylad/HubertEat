@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<h2>Ajouter un restaurant</h2>
+<h2>Ajouter un solde</h2>
 <form action="./?action=ajoutSolde" method="POST" enctype="multipart/form-data">
   <div class="form-row">
     <div class="form-group col-md-6">
