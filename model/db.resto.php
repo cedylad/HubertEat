@@ -307,3 +307,31 @@ function refuserCommande($idC) {
         die();
     }
 }
+
+function annulerCommande($idC) {
+    try {
+        $cnx = connexionPDO();
+        // Récupère le prixP
+        $statement = $cnx->prepare("SELECT prixP FROM commande JOIN plat ON commande.idP = plat.idP WHERE idC = :idC");
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $statement->execute();
+        $montant = $statement->fetchColumn();
+
+        // Ajoute le montant au solde du client
+        $statement = $cnx->prepare("UPDATE users SET soldeU = soldeU + :prixP WHERE mailU = (SELECT mailU FROM commande WHERE idC = :idC)");
+        $statement->bindValue(':prixP', $montant, PDO::PARAM_STR);
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $result = $statement->execute();
+        
+        // Marque la commande comme remboursée = rembourse le client par le prixP
+        $statement = $cnx->prepare("UPDATE commande SET livraison = '3' WHERE idC = :idC");
+        $statement->bindValue(':idC', $idC, PDO::PARAM_STR);
+        $statement->execute();
+        
+        return $result;
+
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}

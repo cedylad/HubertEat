@@ -78,15 +78,15 @@ Solde : <?= $solde; ?> € <br>
                                 if($livre == 1){
                             ?>
                                     <li class="p-3 bg-success text-white">Commande livrée</li>
-                            <?php
-                                } else if($livre == 0){ 
-                            ?>
+                            <?php } else if($livre == 0){ ?>
                                     <li class="p-3 bg-secondary text-white">Commande en attente</li>
-                            <?php } else { ?>
-                                    <li class="p-3 bg-danger text-white">Commande refusé</li>
-                            <?php  } ?>
+                                    <a href="./?action=annulerCommande&idC=<?=$commande['idC']?>" class="btn btn-warning">Annuler</a>
+                            <?php } else if($livre == 3) { ?>
+                                    <li class="p-3 bg-dark text-white">Commande annulée</li>
+                            <?php  } else{ ?>
+                                <li class="p-3 bg-danger text-white">Commande refusé</li>
+                            <?php } ?>
                         </ul>
-
         </div>
     </div>
     <?php } ?>
