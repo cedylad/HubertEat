@@ -23,6 +23,7 @@ function controller($action) {
         "refuserCommande" => "refuserCommande.php",
         "ajoutSolde" => "ajoutSolde.php",
         "annulerCommande" => "annulerCommande.php",
+        "deleteUser" => "deleteUser.php",
     );
 
     // Si un utilisateur est connecté
@@ -63,9 +64,9 @@ function controller($action) {
             $lesActions["connexion"] = "admin.php";
             $lesActions["inscription"] = "admin.php";
             $lesActions["profil"] = "admin.php";
-            $
-
             $lesActions["deletePlat"] = "deletePlat.php";
+            $lesActions["deleteResto"] = "deleteResto.php";
+            $lesActions["deleteUser"] = "deleteUser.php";
         }
     }
 

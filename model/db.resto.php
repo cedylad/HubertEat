@@ -107,7 +107,7 @@ function getLastIdResto() {
             return $resultat['idR']; // retourne la valeur de l'idR s'il existe dans le tableau associatif
         }
     } catch (PDOException $e) {
-        print "Erreur !: " . $e->getMessage(); // affichage d'un message d'erreur en cas de problème avec la base de données
+        print "Erreur !: " . $e->getMessage(); 
         die();
     }
     return null; // retourne null si aucun idR n'a été trouvé
@@ -190,10 +190,15 @@ function getPlatByrestoR($restoR){
 function deletePlat($idP) {
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare("DELETE FROM plat WHERE idP = :idP");
+        $statement = $cnx->prepare("DELETE FROM commande WHERE idP = :idP");
         $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
         $result = $statement->execute();
-        return $result;
+
+        $$statement2 = $cnx->prepare("DELETE FROM plat WHERE idP = :idP");
+        $$statement2->bindValue(':idP', $idP, PDO::PARAM_STR);
+        $result2 = $$statement2->execute();
+
+        return $result && $result2;
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
