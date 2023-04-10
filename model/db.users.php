@@ -1,7 +1,7 @@
 <?php
-
 include_once "db.hubereat.php";
 
+//Récupération de tous les users
 function getUsers(){
     try {
         $cnx = connexionPDO();
@@ -15,6 +15,7 @@ function getUsers(){
     return $result;
 }
 
+//Récupération de tous les utilisaturs par leur mail
 function getUserByMail($mail){
     try {
         $cnx = connexionPDO();
@@ -29,10 +30,10 @@ function getUserByMail($mail){
     return $result;
 }
 
+//Pour ajouter un utilisateur (inscription)
 function addUser($lastName, $firstName, $mail, $password) {
     try {
         $cnx = connexionPDO();
-
         $passwordCrypt = crypt($password, "sel");
         $req = $cnx->prepare('INSERT INTO users (lastNameU, firstNameU, mailU, passwordU) VALUES(:lastName, :firstName, :mail, :password)');
         $req->bindValue(':lastName', $lastName, PDO::PARAM_STR);
@@ -47,6 +48,7 @@ function addUser($lastName, $firstName, $mail, $password) {
     return $resultat;
 }
 
+//Récupérer un utilisateur par son type (admin, resauateur et client)
 function getUsersByType($type){
     try {
         $cnx = connexionPDO();
@@ -61,12 +63,10 @@ function getUsersByType($type){
     return $result;
 }
 
-/* DEBUT PARTIE ADMIN */
-
+//Permet de supprimer un utilisateur (pour l'admin)
 function deleteUser($mailU){
     try {
         $cnx = connexionPDO();
-
         $statement = $cnx->prepare("DELETE address FROM address
                                     LEFT JOIN resto ON address.idR = resto.idR
                                     WHERE resto.ownerR = :mailU");
@@ -88,6 +88,7 @@ function deleteUser($mailU){
     }
 }
 
+//Permet d'ajouter un nouveau solde
 function addSolde($solde, $mail) {
     try {
         $cnx = connexionPDO();

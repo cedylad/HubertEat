@@ -11,8 +11,8 @@
                     <div class="card-body">
                         <h5 class="card-title"><?=$resto['nameR']?></h5>
                         <hr>
-                        <p class="card-text">Ouvert à : <?=$resto['hourOpenR']?> </p>
-                        <p class="card-text">Fermé à : <?=$resto['hourCloseR']?></p>
+                        <p class="card-text">Ouvert : <?=$resto['hourOpenR']?> </p>
+                        <p class="card-text">Fermé : <?=$resto['hourCloseR']?></p>
                         <p class="card-text">Téléphone : <a href="tel:<?=$resto['phoneR']?>"><?=$resto['phoneR']?> </a></p>
                         <a href="./?action=afficherResto&idR=<?=$resto['idR']?>" class="btn btn-primary">Découvrir !</a>
                     </div>

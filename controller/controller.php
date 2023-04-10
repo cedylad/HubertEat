@@ -3,6 +3,8 @@ include_once "$racine/model/db.users.php";
 include_once "$racine/model/db.resto.php";
 
 function controller($action) {
+
+    // Tableau associatif contenant toutes les actions disponibles et leur correspondance avec un fichier de vue
     $lesActions = array(
         "defaut" => "home.php",
         "home" => "home.php",
@@ -23,13 +25,17 @@ function controller($action) {
         "annulerCommande" => "annulerCommande.php",
     );
 
+    // Si un utilisateur est connecté
     if (isLoggedOn()) {
         $mail = getMailULoggedOn();
         $restosbymail = getRestoByMail($mail);
         $utilisateur = getUserByMail($mail);
         $typeU = $utilisateur["typeU"];
 
+        // Si l'utilisateur est un client ou un restaurateur
         if($typeU == 1 || $typeU == 2 || $typeU == NULL){
+
+            // On définit les actions autorisées pour ces utilisateurs
             $lesActions["defaut"] = "home.php";
             $lesActions["home"] = "home.php";
             $lesActions["resturant"] = "home.php";
@@ -48,19 +54,17 @@ function controller($action) {
             $lesActions["annulerCommande"] = "annulerCommande.php";
         }
 
+        // Si l'utilisateur est un administrateur
         if($typeU == 3){
-            /* PARTIE ADMIN */
+            // On définit les actions autorisées pour l'administrateur
             $lesActions["defaut"] = "admin.php";
             $lesActions["home"] = "admin.php";
             $lesActions["resturant"] = "admin.php";
             $lesActions["connexion"] = "admin.php";
             $lesActions["inscription"] = "admin.php";
             $lesActions["profil"] = "admin.php";
-            $lesActions["ajoutResto"] = "admin.php";
-            $lesActions["afficherResto"] = "afficherResto.php";
-            $lesActions["deleteResto"] = "deleteResto.php";
-            $lesActions["restaurateur"] = "admin.php";
-            $lesActions["ajoutPlat"] = "admin.php";
+            $
+
             $lesActions["deletePlat"] = "deletePlat.php";
         }
     }
