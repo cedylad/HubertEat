@@ -117,20 +117,20 @@ function getLastIdResto() {
 function deleteResto($idR){
     try {
         $cnx = connexionPDO();
+        // Suppression des plats associés au restaurant
+        $statement2 = $cnx->prepare("DELETE FROM plat WHERE restoR =:idR");
+        $statement2->bindValue(':idR', $idR, PDO::PARAM_STR);
+         $result2 = $statement2->execute();
         // Suppression de l'adresse associée au restaurant
         $statement = $cnx->prepare("DELETE FROM address WHERE idR =:idR");
         $statement->bindValue(':idR', $idR, PDO::PARAM_STR);
         $result = $statement->execute();
-        // Suppression des plats associés au restaurant
-        $statement2 = $cnx->prepare("DELETE FROM plat WHERE restoR =:idR");
-        $statement2->bindValue(':idR', $idR, PDO::PARAM_STR);
-        $result2 = $statement2->execute();
         // Suppression du restaurant
         $statement3 = $cnx->prepare("DELETE FROM resto WHERE idR =:idR");
         $statement3->bindValue(':idR', $idR, PDO::PARAM_STR);
         $result3 = $statement3->execute();
         // Retourne vrai si toutes les suppressions ont été effectuées avec succès, faux sinon
-        return $result && $result2 && $result3;
+        return $result2 && $result && $result3;
     } catch (PDOException $e) {
         // En cas d'erreur, affiche un message et arrête l'exécution du script
         print "Erreur !: " . $e->getMessage();
@@ -194,9 +194,9 @@ function deletePlat($idP) {
         $statement->bindValue(':idP', $idP, PDO::PARAM_STR);
         $result = $statement->execute();
 
-        $$statement2 = $cnx->prepare("DELETE FROM plat WHERE idP = :idP");
-        $$statement2->bindValue(':idP', $idP, PDO::PARAM_STR);
-        $result2 = $$statement2->execute();
+        $statement2 = $cnx->prepare("DELETE FROM plat WHERE idP = :idP");
+        $statement2->bindValue(':idP', $idP, PDO::PARAM_STR);
+        $result2 = $statement2->execute();
 
         return $result && $result2;
     } catch (PDOException $e) {

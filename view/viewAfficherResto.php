@@ -22,7 +22,7 @@
                                 <a href="./?action=commanderPlat&idP=<?=$plat['idP']?>" class="btn btn-primary">Commander</a>
                                 <?php } ?>
                                 <?php if($userType == 3 || $userType == 1){ ?>
-                                    <a href="./?action=deletePlat&idR=<?=$plat['idP']?>" class="btn btn-danger">Supprimer</a>
+                                    <a href="./?action=deletePlat&idP=<?=$plat['idP']?>" class="btn btn-danger">Supprimer</a>
                                 <?php } ?>
                             </div>
                         </div>
