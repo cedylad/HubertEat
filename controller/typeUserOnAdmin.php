@@ -24,9 +24,8 @@ if (isLoggedOn() && isset($_GET['mailU'])) {
             }
             deleteResto($resto['idR']);
         }
-
-        // Supprimer l'utilisateur
-        deleteUser($mailU);
+        //Changer l'utilisateur en Administrateur 
+        changeTypeUserOnAdminstrateur($mailU);
 
         // Rediriger vers la page d'administration si l'utilisateur est un administrateur
         if ($userType == 3) {
@@ -35,7 +34,6 @@ if (isLoggedOn() && isset($_GET['mailU'])) {
         // Rediriger vers la page de profil si l'utilisateur est un client
         } elseif ($userType == 1) {
             header("Location: ./?action=profil");
-            include "$racine/controller/admin.php";
         }
         // Terminer l'exécution du script
         exit();

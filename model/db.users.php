@@ -5,15 +5,18 @@ include_once "db.hubereat.php";
 function getUsers(){
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare('SELECT * FROM users');
+        $statement = $cnx->prepare('SELECT users.*, typeuser.* 
+                                    FROM users
+                                    JOIN typeuser ON users.typeU = typeuser.idT');
         $statement->execute();
-        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC); // Récupération des résultats sous forme d'array associatif
     } catch (PDOException $e) {
         print "Erreur !: " . $e->getMessage();
         die();
     }
     return $result;
 }
+
 
 //Récupération de tous les utilisaturs par leur mail
 function getUserByMail($mail){
@@ -103,4 +106,45 @@ function addSolde($solde, $mail) {
     return $resultat;
 }
 
+//Change un utilisateur en restaurateur
+function changeTypeUserOnRestaurateur($mail) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare('UPDATE users SET typeU = 1 WHERE mailU = :mail');
+        $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
+//Change un utilisateur en Client
+function changeTypeUserOnClient($mail) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare('UPDATE users SET typeU = 2 WHERE mailU = :mail');
+        $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
+
+//Change un utilisateur en Administrateur
+function changeTypeUserOnAdminstrateur($mail) {
+    try {
+        $cnx = connexionPDO();
+        $req = $cnx->prepare('UPDATE users SET typeU = 3 WHERE mailU = :mail');
+        $req->bindValue(':mail', $mail, PDO::PARAM_STR);
+        $resultat = $req->execute();
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+    return $resultat;
+}
 

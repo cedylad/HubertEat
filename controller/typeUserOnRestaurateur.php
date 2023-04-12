@@ -13,21 +13,8 @@ if (isLoggedOn() && isset($_GET['mailU'])) {
     // Si l'utilisateur existe
     if (isset($utilisateur)) {
         $userType = $utilisateur["typeU"];
-        
-        // Supprimer les restaurants associés à l'utilisateur
-        $restos = getRestoByMail($mailU);
-        foreach ($restos as $resto) {
-            // Supprimer les plats associés au restaurant
-            $plats = getPlatByrestoR($resto['idR']);
-            foreach ($plats as $plat) {
-                deletePlat($plat['idP']);
-            }
-            deleteResto($resto['idR']);
-        }
-
-        // Supprimer l'utilisateur
-        deleteUser($mailU);
-
+        //Changer l'utilisateur en Restaurateur 
+        changeTypeUserOnRestaurateur($mailU);
         // Rediriger vers la page d'administration si l'utilisateur est un administrateur
         if ($userType == 3) {
             header("Location: ./?action=admin");
@@ -35,7 +22,6 @@ if (isLoggedOn() && isset($_GET['mailU'])) {
         // Rediriger vers la page de profil si l'utilisateur est un client
         } elseif ($userType == 1) {
             header("Location: ./?action=profil");
-            include "$racine/controller/admin.php";
         }
         // Terminer l'exécution du script
         exit();

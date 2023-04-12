@@ -24,6 +24,9 @@ function controller($action) {
         "ajoutSolde" => "ajoutSolde.php",
         "annulerCommande" => "annulerCommande.php",
         "deleteUser" => "deleteUser.php",
+        "typeUserOnAdmin" => "typeUserOnAdmin.php",
+        "typeUserOnClient" => "typeUserOnClient.php",
+        "typeUserOnRestaurant" => "typeUserOnRestaurateur.php",
     );
 
     // Si un utilisateur est connecté
@@ -67,6 +70,9 @@ function controller($action) {
             $lesActions["deletePlat"] = "deletePlat.php";
             $lesActions["deleteResto"] = "deleteResto.php";
             $lesActions["deleteUser"] = "deleteUser.php";
+            $lesActions["typeUserOnAdmin"] = "typeUserOnAdmin.php";
+            $lesActions["typeUserOnClient"] = "typeUserOnClient.php";
+            $lesActions["typeUserOnRestaurateur"] = "typeUserOnRestaurateur.php";
         }
     }
 

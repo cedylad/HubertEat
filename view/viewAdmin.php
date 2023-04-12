@@ -11,7 +11,19 @@
                 <div class="card-body">
                     <h5 class="card-title"><?= $user['lastNameU'] . " " . $user['firstNameU'] ?></h5>
                     <p class="card-text"><?= $user['mailU'] ?> </p>
-                    <p class="card-text"><?= $user['typeU'] ?> </p>
+                    <p class="card-text"><?= $user['nameT'] ?> </p>
+                                <!--Changer le typeuser-->
+                    <?php if ($user['idT'] == 2){ ?>
+                        <a href="./?action=typeUserOnRestaurateur&mailU=<?= $user['mailU'] ?>">Rendre restaurateur</a><br>
+                        <a href="./?action=typeUserOnAdmin&mailU=<?= $user['mailU'] ?>">Rendre Administrateur</a>
+                    <?php } if ($user['idT'] == 1){ ?>
+                        <a href="./?action=typeUserOnClient&mailU=<?= $user['mailU'] ?>">Rendre Client</a><br>
+                        <a href="./?action=typeUserOnAdmin&mailU=<?= $user['mailU'] ?>">Rendre Administrateur</a>
+                    <?php } if ($user['idT'] == 3){ ?>
+                        <a href="./?action=typeUserOnClient&mailU=<?= $user['mailU'] ?>">Rendre Client</a><br>
+                        <a href="./?action=typeUserOnClient&mailU=<?= $user['mailU'] ?>">Rendre restaurateur</a>
+                    <?php } ?>
+
                     <hr>
                     <a href="./?action=deleteUser&mailU=<?= $user['mailU'] ?>">Supprimer l'utilisateur</a>
                     <hr>
