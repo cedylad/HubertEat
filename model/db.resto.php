@@ -15,6 +15,23 @@ function getResto(){
     return $result;
 }
 
+//Fonction pour récuperer les restaurant ouverts et fermés
+function getRestoOpenAtTime($heure) {
+    try{
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("SELECT * FROM resto WHERE hourOpenR <= :heure AND hourCloseR >= :heure");
+        $statement->bindValue(':heure', $heure, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e){
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+
+    return $result;
+}
+
+
 // Fonction pour récupérer un restaurant par son identifiant
 function getRestoById($idR){
     try {

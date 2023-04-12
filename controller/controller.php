@@ -27,6 +27,7 @@ function controller($action) {
         "typeUserOnAdmin" => "typeUserOnAdmin.php",
         "typeUserOnClient" => "typeUserOnClient.php",
         "typeUserOnRestaurant" => "typeUserOnRestaurateur.php",
+        "restaurant" => "restaurant.php",
     );
 
     // Si un utilisateur est connecté
@@ -56,6 +57,7 @@ function controller($action) {
             $lesActions["refuserCommande"] =  "refuserCommande.php";
             $lesActions["ajoutSolde"] = "ajoutSolde.php";
             $lesActions["annulerCommande"] = "annulerCommande.php";
+            $lesAction["restaurant"] = "restaurant.php";
         }
 
         // Si l'utilisateur est un administrateur
