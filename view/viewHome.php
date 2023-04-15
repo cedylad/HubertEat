@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
-<h2>Voici les restaurants disponibles (OUVERTS) sur HuberEat :</h2>
-<br>
 <div class="row">
+    <?php if(isset($lesRestos)){?>
+        <h2>Voici les restaurants disponibles (OUVERTS) sur HuberEat :</h2>
 <?php foreach ($lesRestos as $resto){ ?>
 <div class="col-sm-4">
             <div class="card">
@@ -20,4 +20,8 @@
         <?php } ?>
 </div>
 </div>
+<?php } else { ?>
+    <h2>Aucun restaurant n'est disponnible à cette heure-ci.</h2>
+    <p>Consulter notre onglet <a href='./?action=restaurants'>"Les restaurants"</a> pour voir les horaires des restaurants.</p>
+    <?php } ?>
 <?php $content = ob_get_clean(); ?>
