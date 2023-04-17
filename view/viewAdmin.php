@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <br>
-<h2>CONTROL PANNEL : SUPERVISION </h2>
+<h2>CONTROL PANEL : SUPERVISION </h2>
 <br>
 <div class="row">
     <?php foreach ($lesUsers as $user) {

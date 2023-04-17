@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <div class="row">
     <?php if(!empty($lesRestos)){?>
-        <h2>Voici les restaurants disponibles (OUVERTS) sur HuberEat :</h2>
+        <h2>Voici les restaurants ouverts sur HuberEat :</h2>
 <?php foreach ($lesRestos as $resto){ ?>
 <div class="col-sm-4">
             <div class="card">

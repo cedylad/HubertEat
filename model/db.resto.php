@@ -134,6 +134,7 @@ function getLastIdResto() {
 function deleteResto($idR){
     try {
         $cnx = connexionPDO();
+        //suppression des commandes associés au restaurant
         // Suppression des plats associés au restaurant
         $statement2 = $cnx->prepare("DELETE FROM plat WHERE restoR =:idR");
         $statement2->bindValue(':idR', $idR, PDO::PARAM_STR);

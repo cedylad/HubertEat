@@ -41,7 +41,7 @@ Solde : <?= $solde; ?> € <br>
         <?php } ?>
         <hr>
     </div>
-    
+    <?php if ($boutonAjoutResto == 3 ){?>
     <h2> Mes commandes en attente : </h2> 
     <div class="row">
         <?php foreach($lesCommandes as $uneCommande){ ?>
@@ -59,6 +59,7 @@ Solde : <?= $solde; ?> € <br>
         </div>
         <?php } ?>
     </div>
+    <?php }?>
     <?php } else { ?>
         <h2> Mes commandes : </h2>
             <?php foreach($commandeClient as $commande){ ?>
