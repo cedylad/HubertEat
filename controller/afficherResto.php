@@ -4,6 +4,8 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     $racine = ".."; // définit la racine du projet
 }
 
+require_once('tcpdf/tcpdf.php');
+
 // On inclut les fichiers contenant les fonctions de gestion des utilisateurs et des restaurants
 include_once "$racine/model/db.users.php";
 include_once "$racine/model/db.resto.php";

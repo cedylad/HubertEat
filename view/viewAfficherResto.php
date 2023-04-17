@@ -4,6 +4,7 @@
     <div class="card-body">
         <h1 class="card-title">Restaurant <?=$nomR?></h1>
         <p class="card-text">Ville : <?=$villeR?><br>Pays : <?=$paysR?><br>Assistance : <a href="mailto:<?=$mailRestaurateur?>"><?=$mailRestaurateur?></a></p>
+        <a href="./?action=telechargerPlat&idR=<?=$idR?>" class="btn btn-primary mb-3">Télécharger la brochure du restaurant</a>
         <?php if(isset($lesPlats)){?>
           <hr>
             <div class="row">
@@ -32,4 +33,5 @@
         <?php } ?> <!-- End if -->
     </div>
 </div>
+
 <?php $content = ob_get_clean(); ?>
