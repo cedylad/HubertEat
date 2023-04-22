@@ -258,7 +258,7 @@ function getCommandeByMailU($mailU){
     try {
         $cnx = connexionPDO();
         $statement = $cnx->prepare('SELECT commande.*, plat.nomP, plat.prixP FROM commande JOIN plat 
-        ON commande.idP = plat.idP WHERE mailU = :mail ORDER BY commande.dateC DESC');
+                                    ON commande.idP = plat.idP WHERE mailU = :mail ORDER BY commande.dateC DESC');
         $statement->bindValue(':mail', $mailU, PDO::PARAM_STR);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -269,12 +269,16 @@ function getCommandeByMailU($mailU){
     }
 }
 
-//Finctuon pour récupérer les commandes par livraison (si validé, refusé ou annulé)
-function getCommandeByLivraison() {
+//Finctuon pour récupérer les commandes en attente selon le ownerR du resto 
+function getCommandeByLivraison($mailU) {
     try {
         $cnx = connexionPDO();
-        $statement = $cnx->prepare("SELECT commande.*, plat.*, users.* FROM commande JOIN plat ON commande.idP = plat.idP JOIN users 
-        ON commande.mailU = users.mailU WHERE commande.livraison = '0'");
+        $statement = $cnx->prepare("SELECT commande.*, plat.*, users.* FROM commande 
+                                    JOIN plat ON commande.idP = plat.idP 
+                                    JOIN users ON commande.mailU = users.mailU 
+                                    WHERE commande.livraison = '0' AND plat.restoR IN 
+                                        (SELECT idR FROM resto WHERE ownerR = :mailU)");
+        $statement->bindParam('mailU', $mailU, PDO::PARAM_STR);
         $statement->execute();
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $result;

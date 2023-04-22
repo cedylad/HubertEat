@@ -12,7 +12,7 @@ if (isLoggedOn()) {
     $restosbymail = getRestoByMail($mail);
     $utilisateur = getUserByMail($mail);
     $commandeClient = getCommandeByMailU($mail);
-    $lesCommandes = getCommandeByLivraison();
+    $lesCommandes = getCommandeByLivraison($mail);
 
     // Récupération des informations nécessaires pour afficher le profil de l'utilisateur
     $boutonAjoutResto = $utilisateur["typeU"];
