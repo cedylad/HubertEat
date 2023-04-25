@@ -355,3 +355,55 @@ function annulerCommande($idC) {
         die();
     }
 }
+
+//Modifier un restaurant
+function modifierResto($idR, $nameR, $hourOpenR, $hourCloseR, $phoneR) {
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("UPDATE resto SET nameR = :nameR, hourOpenR = :hourOpenR, hourCloseR = :hourCloseR, phoneR = :phoneR WHERE idR = :idR");
+        $statement->bindValue(':idR', $idR, PDO::PARAM_STR);
+        $statement->bindValue(':nameR', $nameR, PDO::PARAM_STR);
+        $statement->bindValue(':hourOpenR', $hourOpenR, PDO::PARAM_STR);
+        $statement->bindValue(':hourCloseR', $hourCloseR, PDO::PARAM_STR);
+        $statement->bindValue(':phoneR', $phoneR, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+//Modifier img du resto
+function modifierImgResto($idR, $imgR ) {
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("UPDATE resto SET imgR = :imgR WHERE idR = :idR");
+        $statement->bindValue(':idR', $idR, PDO::PARAM_STR);
+        $statement->bindValue(':imgR', $imgR, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}
+
+//Modifier img du resto
+function modifierAddressResto($idR, $countryA, $cityA) {
+    try {
+        $cnx = connexionPDO();
+        $statement = $cnx->prepare("UPDATE address SET countryA = :countryA, cityA = :cityA WHERE idR = :idR");
+        $statement->bindValue(':idR', $idR, PDO::PARAM_STR);
+        $statement->bindValue(':countryA', $countryA, PDO::PARAM_STR);
+        $statement->bindValue(':cityA', $cityA, PDO::PARAM_STR);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    } catch (PDOException $e) {
+        print "Erreur !: " . $e->getMessage();
+        die();
+    }
+}

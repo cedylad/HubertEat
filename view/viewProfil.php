@@ -32,7 +32,7 @@ Solde : <?= $solde; ?> € <br>
                         <?php } ?>
 
                         <?php if ($boutonAjoutResto == 1 || $boutonAjoutResto == 3 ){ ?>
-                            <a href="./?action=ajoutPlat&idR=<?=$resto['idR']?>" class="btn btn-warning">Modifier le restaurant</a>
+                            <a href="./?action=modifierRestoV2&idR=<?=$resto['idR']?>" class="btn btn-warning">Modifier le restaurant</a>
                             <a href="./?action=deleteResto&idR=<?=$resto['idR']?>" class="btn btn-danger">Supprimer</a>
                         <?php } ?>
                     </div>

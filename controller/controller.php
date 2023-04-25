@@ -29,6 +29,7 @@ function controller($action) {
         "typeUserOnRestaurant" => "typeUserOnRestaurateur.php",
         "restaurant" => "restaurant.php",
         "telechargerPlat" => "telechargerPlat.php",
+        "modifierRestoV2" => "modifierRestoV2.php",
     );
 
     // Si un utilisateur est connecté
@@ -60,6 +61,7 @@ function controller($action) {
             $lesActions["annulerCommande"] = "annulerCommande.php";
             $lesAction["restaurant"] = "restaurant.php";
             $lesAction["telechargerPlat"] = "telechargerPlat.php";
+            $lesAction["modifierRestoV2"] = "modifierRestoV2.php";
         }
 
         // Si l'utilisateur est un administrateur

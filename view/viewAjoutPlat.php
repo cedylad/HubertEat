@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <h2>Ajouter un plat</h2>
-<form action="./?action=ajoutPlat&idR=<?=($_GET['idR']);?>" method="POST" enctype="multipart/form-data">
+<form action="./?action=ajoutPlat&idR=<?=$_GET['idR'];?>" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label>Nom du plat</label>
         <input type="text" class="form-control" name="nomP" required>
