@@ -22,7 +22,7 @@
                                 <?php if($userType == 2 || $userType == NULL){ ?>
                                 <a href="./?action=commanderPlat&idP=<?=$plat['idP']?>" class="btn btn-primary">Commander</a>
                                 <?php } ?>
-                                <?php if($userType == 3 || $userType == 1){ ?>
+                                <?php if($mailRestaurateur == $_SESSION['mailU']){ ?>
                                     <a href="./?action=deletePlat&idP=<?=$plat['idP']?>" class="btn btn-danger">Supprimer</a>
                                 <?php } ?>
                             </div>
