@@ -13,6 +13,16 @@ if (isLoggedOn() && isset($_GET['mailU'])) {
     // Si l'utilisateur existe
     if (isset($utilisateur)) {
         $userType = $utilisateur["typeU"];
+        // Supprimer les restaurants associés à l'utilisateur
+        $restos = getRestoByMail($mailU);
+        foreach ($restos as $resto) {
+            // Supprimer les plats associés au restaurant
+            $plats = getPlatByrestoR($resto['idR']);
+            foreach ($plats as $plat) {
+                deletePlat($plat['idP']);
+            }
+            deleteResto($resto['idR']);
+        }
         //Changer l'utilisateur en Restaurateur 
         changeTypeUserOnRestaurateur($mailU);
         // Rediriger vers la page d'administration si l'utilisateur est un administrateur
